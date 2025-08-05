@@ -61,6 +61,15 @@ const districtData = districts.map(d => ({
 fs.writeFileSync('districts.csv', toCsv(districtData));
 console.log('Successfully created districts.csv');
 
+// Create villages.csv
+const villageData = villages.map(v => ({
+    district_code: cleanCode(v.district_code),
+    name: cleanCode(v.code),
+    label: v.name
+}));
+fs.writeFileSync('villages.csv', toCsv(villageData));
+console.log('Successfully created villages.csv');
+
 // Create village CSVs per province
 const villageDir = 'villages_by_province';
 if (!fs.existsSync(villageDir)){
